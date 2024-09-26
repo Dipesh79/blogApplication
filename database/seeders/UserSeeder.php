@@ -19,6 +19,6 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        $user->assignRole(Role::find(1));
+        $user->assignRole(Role::findByName('Admin'));
     }
 }

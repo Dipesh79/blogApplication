@@ -24,6 +24,7 @@ class PermissionSeeder extends Seeder
         }
 
         $role = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Admin']);
+        $role = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Author']);
 
         $role->givePermissionTo($permissions);
     }
