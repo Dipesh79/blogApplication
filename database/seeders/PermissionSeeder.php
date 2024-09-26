@@ -17,15 +17,21 @@ class PermissionSeeder extends Seeder
             'role_show',
             'role_update',
             'role_delete',
+
+            'user_index',
+            'user_create',
+            'user_show',
+            'user_update',
+            'user_delete',
         ];
 
         foreach ($permissions as $permission) {
             \Spatie\Permission\Models\Permission::firstOrCreate(['name' => $permission]);
         }
 
-        $role = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Admin']);
-        $role = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Author']);
+        $admin = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Admin']);
+        \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Author']);
 
-        $role->givePermissionTo($permissions);
+        $admin->givePermissionTo($permissions);
     }
 }

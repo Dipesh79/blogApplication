@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93170fbbdc2c873e22f27a8fec447850",
+    "content-hash": "194fb990c13bff001ca6c39f8b0017e4",
     "packages": [
         {
             "name": "brick/math",
@@ -284,6 +284,69 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.3"
             },
             "time": "2024-07-08T12:26:09+00:00"
+        },
+        {
+            "name": "dipesh79/laravel-helpers",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dipesh79/laravel-helpers.git",
+                "reference": "25c5a03751340848d2862c3c56596651853bedf0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dipesh79/laravel-helpers/zipball/25c5a03751340848d2862c3c56596651853bedf0",
+                "reference": "25c5a03751340848d2862c3c56596651853bedf0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "8.x-dev",
+                "phpunit/phpunit": "10.5.x-dev"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dipesh79\\LaravelHelpers\\LaravelHelpersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Dipesh79\\LaravelHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dipesh Khanal",
+                    "email": "dipeshkhanal79@gmail.com",
+                    "homepage": "https://khanaldipesh.com.np",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Laravel Helpers",
+            "keywords": [
+                "helpers",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/Dipesh79/laravel-helpers/issues",
+                "source": "https://github.com/Dipesh79/laravel-helpers/tree/1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/dipeshkhanal",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-07-28T23:54:29+00:00"
         },
         {
             "name": "doctrine/inflector",

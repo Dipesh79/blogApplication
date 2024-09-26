@@ -15,9 +15,9 @@ class UserCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         if ($this->collection != $this->resource) {
-            return ['user' => $this->collection, 'paginate' => $this->resource];
+            return [$this->resource];
         } else {
-            return ['user' => $this->collection];
+            return [$this->collection];
         }
     }
 }

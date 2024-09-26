@@ -11,4 +11,8 @@ Route::controller(AuthenticationController::class)->group(function () {
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+
+    //User
+    Route::apiResource('users', \App\Http\Controllers\UserController::class);
+
 });
