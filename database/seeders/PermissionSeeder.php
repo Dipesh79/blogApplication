@@ -20,10 +20,10 @@ class PermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            \Spatie\Permission\Models\Permission::firstOrCreate(['name' => $permission,'guard_name' => 'api']);
+            \Spatie\Permission\Models\Permission::firstOrCreate(['name' => $permission]);
         }
 
-        $role = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Admin','guard_name' => 'api']);
+        $role = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Admin']);
 
         $role->givePermissionTo($permissions);
     }
