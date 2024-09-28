@@ -47,7 +47,7 @@ class ApiBaseController extends Controller
     {
         return response()->json([
             'status' => $code,
-            'errors' => $data,
+            'data' => $data,
             'message' => $message
         ], $code);
     }

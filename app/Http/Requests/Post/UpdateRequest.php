@@ -56,7 +56,7 @@ class UpdateRequest extends FormRequest
              * @var array $tags
              * @example [1]
              */
-            'tags' => ['required', 'array'],
+            'tags' => ['nullable', 'array'],
 
             /**
              * Tags of Post
@@ -85,7 +85,6 @@ class UpdateRequest extends FormRequest
             'category.required' => 'Category is required',
             'category.integer' => 'Category must be an integer',
             'category.exists' => 'Category does not exist',
-            'tags.required' => 'Tags is required',
             'tags.array' => 'Tags must be an array',
             'tags.*.integer' => 'Tags must be an integer',
             'tags.*.exists' => 'Tags does not exist',

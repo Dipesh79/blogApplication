@@ -24,4 +24,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     //Post
     Route::apiResource('posts', \App\Http\Controllers\PostController::class);
 
+    //Comment
+    Route::apiResource('comments', \App\Http\Controllers\CommentController::class)->except(['index', 'show']);
+
 });

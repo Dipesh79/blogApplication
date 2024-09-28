@@ -56,7 +56,7 @@ class StoreRequest extends FormRequest
              * @var array $tags
              * @example [1]
              */
-            'tags' => ['required', 'array'],
+            'tags' => ['nullable', 'array'],
 
             /**
              * Tags of Post
@@ -85,7 +85,6 @@ class StoreRequest extends FormRequest
             'category.required' => 'The category field is required.',
             'category.integer' => 'The category field must be an integer.',
             'category.exists' => 'The selected category is invalid.',
-            'tags.required' => 'The tags field is required.',
             'tags.array' => 'The tags field must be an array.',
             'tags.*.integer' => 'The tags field must contain only integers.',
             'tags.*.exists' => 'The selected tags is invalid.'

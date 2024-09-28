@@ -42,6 +42,10 @@ class PermissionSeeder extends Seeder
             'post_update',
             'post_delete',
 
+            'comment_store',
+            'comment_update',
+            'comment_delete',
+
         ];
 
         foreach ($permissions as $permission) {
