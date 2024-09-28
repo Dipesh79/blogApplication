@@ -41,28 +41,28 @@ class IndexRequest extends FormRequest
              * @var string $title
              * @example Post Title
              */
-            'title' => ['nullable', 'string'],
+            'filter[title]' => ['nullable', 'string'],
 
             /**
              * Author of the post
              * @var string $author
              * @example John Doe
              */
-            'author' => ['nullable', 'string'],
+            'filter[author]' => ['nullable', 'string'],
 
             /**
              * Category of the post
              * @var string $category
              * @example Category Name
              */
-            'category' => ['nullable', 'string'],
+            'filter[category]' => ['nullable', 'string'],
 
             /**
              * Tag of the post
              * @var string $tag
              * @example Tag Name
              */
-            'tag' => ['nullable', 'string'],
+            'filter[tag]' => ['nullable', 'string'],
         ];
     }
 }

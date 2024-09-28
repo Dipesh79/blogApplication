@@ -20,7 +20,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->title,
+            'title' => $this->faker->name,
             'slug' => $this->faker->slug,
             'content' => $this->faker->paragraph,
             'category_id' => $this->faker->randomElement(Category::pluck('id')->toArray()),
