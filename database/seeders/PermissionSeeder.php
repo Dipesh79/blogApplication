@@ -11,7 +11,7 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        $permissions = [
+        $adminPermissions = [
             'role_index',
             'role_create',
             'role_show',
@@ -35,7 +35,9 @@ class PermissionSeeder extends Seeder
             'tag_show',
             'tag_update',
             'tag_delete',
+        ];
 
+        $authorPermissions = [
             'post_index',
             'post_create',
             'post_show',
@@ -45,15 +47,19 @@ class PermissionSeeder extends Seeder
             'comment_store',
             'comment_update',
             'comment_delete',
-
         ];
+
+
+        $permissions = array_merge($authorPermissions, $adminPermissions);
 
         foreach ($permissions as $permission) {
             \Spatie\Permission\Models\Permission::firstOrCreate(['name' => $permission]);
         }
 
         $admin = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Admin']);
-        \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Author']);
+        $author = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Author']);
+
+        $author->givePermissionTo($authorPermissions);
 
         $admin->givePermissionTo($permissions);
     }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -20,5 +21,7 @@ class UserSeeder extends Seeder
         ]);
 
         $user->assignRole(Role::findByName('Admin'));
+
+        User::factory(10)->create();
     }
 }

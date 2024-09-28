@@ -16,7 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call(
             [
                 PermissionSeeder::class,
-                UserSeeder::class
+                UserSeeder::class,
+                CategorySeeder::class,
+                TagSeeder::class,
+                PostSeeder::class,
+                CommentSeeder::class,
             ]
         );
     }

@@ -22,7 +22,7 @@ class PostController extends ApiBaseController
      */
     public function index(IndexRequest $request): JsonResponse
     {
-        $posts = Post::query();
+        $posts = Post::with(['user', 'category', 'tags','comments']);
         if ($request->title) {
             $posts = $posts->where('title', 'like', '%' . $request->title . '%');
         }
