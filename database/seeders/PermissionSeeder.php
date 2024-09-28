@@ -30,6 +30,12 @@ class PermissionSeeder extends Seeder
             'category_update',
             'category_delete',
 
+            'tag_index',
+            'tag_create',
+            'tag_show',
+            'tag_update',
+            'tag_delete',
+
         ];
 
         foreach ($permissions as $permission) {

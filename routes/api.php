@@ -18,4 +18,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     //Category
     Route::apiResource('categories', \App\Http\Controllers\CategoryController::class);
 
+    //Tag
+    Route::apiResource('tags', \App\Http\Controllers\TagController::class);
+
 });
