@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Post;
 
 use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Comment\CommentResource;
 use App\Http\Resources\Tag\TagCollection;
 use App\Http\Resources\Tag\TagResource;
 use App\Http\Resources\User\UserResource;
@@ -18,6 +19,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property CategoryResource $category
  * @property UserResource $user
  * @property TagCollection $tags
+ * @property CommentResource $comments
  */
 class PostResource extends JsonResource
 {
@@ -57,6 +59,10 @@ class PostResource extends JsonResource
              * @var int $tags.id The id of the tag
              */
             'tags' => TagResource::collection($this->tags),
+            /**
+             * @var int $comments The comments of the post
+             */
+            'comments' => CommentResource::collection($this->comments),
         ];
     }
 }
