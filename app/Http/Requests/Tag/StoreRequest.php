@@ -25,14 +25,14 @@ class StoreRequest extends FormRequest
             /**
              * Name of Tag
              * @var string $name
-             * @example 'Tag 1'
+             * @example Tag 1
              */
             'name' => ['required', 'string'],
 
             /**
              * Slug of Tag
              * @var string $slug
-             * @example 'tag-1'
+             * @example tag-1
              * @unique tags
              */
             'slug' => ['required', 'string', 'unique:tags,slug']

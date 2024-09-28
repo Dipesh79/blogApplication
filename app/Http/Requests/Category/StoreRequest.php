@@ -25,14 +25,14 @@ class StoreRequest extends FormRequest
             /**
              * Name of category
              * @var string $name
-             * @example 'Electronics'
+             * @example Electronics
              */
             'name' => ['required', 'string'],
 
             /**
              * Slug of category
              * @var string $slug
-             * @example 'electronics'
+             * @example electronics
              * @unique categories
              */
             'slug' => ['required', 'string', 'unique:categories,slug']

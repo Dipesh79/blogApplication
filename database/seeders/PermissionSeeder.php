@@ -36,6 +36,12 @@ class PermissionSeeder extends Seeder
             'tag_update',
             'tag_delete',
 
+            'post_index',
+            'post_create',
+            'post_show',
+            'post_update',
+            'post_delete',
+
         ];
 
         foreach ($permissions as $permission) {
