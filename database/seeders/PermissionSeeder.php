@@ -24,13 +24,11 @@ class PermissionSeeder extends Seeder
             'user_update',
             'user_delete',
 
-            'category_index',
             'category_create',
             'category_show',
             'category_update',
             'category_delete',
 
-            'tag_index',
             'tag_create',
             'tag_show',
             'tag_update',
@@ -38,6 +36,10 @@ class PermissionSeeder extends Seeder
         ];
 
         $authorPermissions = [
+            'category_index',
+
+            'tag_index',
+
             'post_index',
             'post_create',
             'post_show',
