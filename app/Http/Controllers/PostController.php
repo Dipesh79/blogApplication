@@ -12,6 +12,8 @@ use App\Http\Resources\Post\PostResource;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PostController extends ApiBaseController
 {
@@ -22,25 +24,35 @@ class PostController extends ApiBaseController
      */
     public function index(IndexRequest $request): JsonResponse
     {
-        $posts = Post::with(['user', 'category', 'tags','comments']);
-        if ($request->title) {
-            $posts = $posts->where('title', 'like', '%' . $request->title . '%');
-        }
-        if ($request->author) {
-            $posts = $posts->whereHas('user', function ($query) use ($request) {
-                $query->where('name', 'like', '%' . $request->author . '%');
-            });
-        }
-        if ($request->category) {
-            $posts = $posts->whereHas('category', function ($query) use ($request) {
-                $query->where('name', 'like', '%' . $request->category . '%');
-            });
-        }
-        if ($request->tag) {
-            $posts = $posts->whereHas('tags', function ($query) use ($request) {
-                $query->where('name', 'like', '%' . $request->tag . '%');
-            });
-        }
+        // Method 1
+//        $posts = Post::with(['user', 'category', 'tags','comments']);
+//        if ($request->title) {
+//            $posts = $posts->where('title', 'like', '%' . $request->title . '%');
+//        }
+//        if ($request->author) {
+//            $posts = $posts->whereHas('user', function ($query) use ($request) {
+//                $query->where('name', 'like', '%' . $request->author . '%');
+//            });
+//        }
+//        if ($request->category) {
+//            $posts = $posts->whereHas('category', function ($query) use ($request) {
+//                $query->where('name', 'like', '%' . $request->category . '%');
+//            });
+//        }
+//        if ($request->tag) {
+//            $posts = $posts->whereHas('tags', function ($query) use ($request) {
+//                $query->where('name', 'like', '%' . $request->tag . '%');
+//            });
+//        }
+
+        // Recommended (Method 2)
+        $posts = QueryBuilder::for(Post::class)->allowedFilters([
+                'title',
+                AllowedFilter::partial('author', 'user.name'),
+                AllowedFilter::partial('category', 'category.name'),
+                AllowedFilter::partial('tag', 'tags.name'),
+            ]
+        );
         if ($request->page && $request->size) {
             $posts = $posts->paginate($request->size);
         } else {
