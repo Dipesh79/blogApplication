@@ -23,7 +23,7 @@ class CommentController extends ApiBaseController
             return $this->custom_error([], 'Post not found', 404);
         }
         $comment = $post->comments()->create([
-            'content' => $request->content,
+            'content' => $request->input('content'),
             'user_id' => auth()->id(),
         ]);
         $response = new CommentResource($comment);
@@ -48,7 +48,7 @@ class CommentController extends ApiBaseController
             return $this->custom_error([], 'Comment not found', 404);
         }
         $comment->update([
-            'content' => $request->content,
+            'content' => $request->input('content'),
         ]);
         $response = new CommentResource($comment);
         return $this->api_success($response, 'Comment updated successfully');

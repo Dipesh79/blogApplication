@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Post;
 
+use App\Models\Post;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
@@ -11,7 +12,8 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->can('post_update');
+        $post = Post::find($this->route('post'));
+        return $post && $this->user()->can('post_update') && ($post->user_id === auth()->id() || auth()->user()->hasRole('Admin'));
     }
 
     /**

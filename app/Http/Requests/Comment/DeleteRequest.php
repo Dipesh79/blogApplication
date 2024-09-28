@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Comment;
 
+use App\Models\Comment;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DeleteRequest extends FormRequest
@@ -11,7 +12,13 @@ class DeleteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->can('comment_delete');
+        $comment = Comment::find($this->route('comment'));
+        if (!$comment) {
+            return false;
+        }
+        $commentUser = $comment->user_id;
+        $postUser = $comment->post->user_id;
+        return auth()->user()->can('comment_delete') && ($commentUser === auth()->id() || $postUser === auth()->id() || auth()->user()->hasRole('Admin'));
     }
 
     /**
