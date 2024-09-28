@@ -22,9 +22,24 @@ class PostController extends ApiBaseController
      */
     public function index(IndexRequest $request): JsonResponse
     {
-        $posts = Post::with('tags');
-        if ($request->search) {
-            $posts = $posts->customFilter($request->search);
+        $posts = Post::query();
+        if ($request->title) {
+            $posts = $posts->where('title', 'like', '%' . $request->title . '%');
+        }
+        if ($request->author) {
+            $posts = $posts->whereHas('user', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->author . '%');
+            });
+        }
+        if ($request->category) {
+            $posts = $posts->whereHas('category', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->category . '%');
+            });
+        }
+        if ($request->tag) {
+            $posts = $posts->whereHas('tags', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->tag . '%');
+            });
         }
         if ($request->page && $request->size) {
             $posts = $posts->paginate($request->size);
