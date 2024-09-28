@@ -21,4 +21,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     //Tag
     Route::apiResource('tags', \App\Http\Controllers\TagController::class);
 
+    //Post
+    Route::apiResource('posts', \App\Http\Controllers\PostController::class);
+
 });

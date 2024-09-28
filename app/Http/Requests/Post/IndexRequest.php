@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Tag;
+namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,8 +11,7 @@ class IndexRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->can('tag_index');
-
+        return auth()->user()->can('post_index');
     }
 
     /**
@@ -40,7 +39,7 @@ class IndexRequest extends FormRequest
             /**
              * Search Query
              * @var string $search
-             * @example Tag Name
+             * @example Post Title
              */
             'search' => ['nullable', 'string'],
         ];
