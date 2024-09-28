@@ -63,7 +63,7 @@ class PostController extends ApiBaseController
                 [
                     'title' => $request->title,
                     'slug' => $request->slug,
-                    'content' => $request->content,
+                    'content' => $request->input('content'),
                     'category_id' => $request->category,
                     'user_id' => auth()->id(),
                 ]
@@ -115,7 +115,7 @@ class PostController extends ApiBaseController
                 [
                     'title' => $request->title,
                     'slug' => $request->slug,
-                    'content' => $request->content,
+                    'content' => $request->input('content'),
                     'category_id' => $request->category,
                 ]
             );

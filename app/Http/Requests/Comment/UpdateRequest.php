@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Comment;
 
+use App\Models\Comment;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
@@ -11,7 +12,12 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->can('comment_update');
+        $comment = Comment::find($this->route('comment'));
+        if (!$comment) {
+            return false;
+        }
+        $commentUser = $comment->user_id;
+        return auth()->user()->can('comment_update') && ($commentUser === auth()->id() || auth()->user()->hasRole('Admin'));
     }
 
     /**
