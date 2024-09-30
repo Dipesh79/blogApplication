@@ -64,5 +64,9 @@ To start the application, use the following command:
 php artisan serve
 ```
 
+Admin Creds
+email: admin@gmail.com 
+password: password
+
 The application will be accessible at `http://localhost:8000` and you can view the API documentation at
 `http://localhost:8000/docs/api`.
